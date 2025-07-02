@@ -1,26 +1,40 @@
 import React, { useReducer } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import MenuPage from "./MenuPage";
 import BookingPage from "./BookingPage";
 import OrderPage from "./OrderPage";
 import LoginPage from "./LoginPage";
+import ConfirmedBooking from "./ConfirmedBooking";
 
 function initializeTimes() {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00"];
+  const today = new Date();
+  console.log("window.fetchAPI:", window.fetchAPI);
+  return window.fetchAPI ? window.fetchAPI(today) : ["17:00", "18:00", "19:00", "20:00", "21:00"];
 }
 
 function updateTimes(state, action) {
-  // For now, always return the same times regardless of date
   if (action.type === "update" && action.date) {
-    return ["17:00", "18:00", "19:00", "20:00", "21:00"];
+    const dateObj = new Date(action.date);
+    return window.fetchAPI ? window.fetchAPI(dateObj) : ["17:00", "18:00", "19:00", "20:00", "21:00"];
   }
   return state;
 }
 
 const Main = () => {
   const [availableTimes, dispatchTimes] = useReducer(updateTimes, [], initializeTimes);
+  const navigate = useNavigate();
+
+  const submitForm = (formData) => {
+    if (window.submitAPI && window.submitAPI(formData)) {
+      // Save booking to localStorage
+      const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+      bookings.push(formData);
+      localStorage.setItem('bookings', JSON.stringify(bookings));
+      navigate("/booking-confirmed");
+    }
+  };
 
   return (
     <main className="main">
@@ -28,7 +42,8 @@ const Main = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/booking" element={<BookingPage availableTimes={availableTimes} dispatchTimes={dispatchTimes} />} />
+        <Route path="/booking" element={<BookingPage availableTimes={availableTimes} dispatchTimes={dispatchTimes} submitForm={submitForm} />} />
+        <Route path="/booking-confirmed" element={<ConfirmedBooking />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
