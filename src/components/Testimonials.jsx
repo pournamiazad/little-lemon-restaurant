@@ -9,17 +9,17 @@ const testimonials = [
 ];
 
 const Testimonials = () => (
-  <section className="testimonials">
+  <section className="testimonials" aria-labelledby="testimonials-title">
     <div className="container">
-      <h2 className="testimonials__title">Testimonials</h2>
+      <h2 className="testimonials__title" id="testimonials-title">Testimonials</h2>
       <div className="testimonials__cards">
         {testimonials.map((t) => (
-          <div key={t.name} className="testimonials__card">
-            <div className="testimonials__rating">Rating: {t.rating}/5</div>
-            <img src={t.img} alt={t.name} className="testimonials__img" />
+          <article key={t.name} className="testimonials__card">
+            <div className="testimonials__rating" aria-label={`Rating: ${t.rating} out of 5`}>Rating: {t.rating}/5</div>
+            <img src={t.img} alt={`Portrait of ${t.name}`} className="testimonials__img" />
             <div className="testimonials__name">{t.name}</div>
             <div className="testimonials__text">{t.text}</div>
-          </div>
+          </article>
         ))}
       </div>
     </div>

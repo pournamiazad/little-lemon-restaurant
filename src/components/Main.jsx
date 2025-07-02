@@ -1,11 +1,11 @@
 import React, { useReducer } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import HomePage from "./HomePage";
-import AboutPage from "./AboutPage";
-import MenuPage from "./MenuPage";
-import BookingPage from "./BookingPage";
-import OrderPage from "./OrderPage";
-import LoginPage from "./LoginPage";
+import HomePage from "../pages/HomePage";
+import AboutPage from "../pages/AboutPage";
+import MenuPage from "../pages/MenuPage";
+import BookingPage from "../pages/BookingPage";
+import OrderPage from "../pages/OrderPage";
+import LoginPage from "../pages/LoginPage";
 import ConfirmedBooking from "./ConfirmedBooking";
 
 function initializeTimes() {

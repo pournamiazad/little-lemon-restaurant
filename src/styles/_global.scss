@@ -1,0 +1,38 @@
+@use 'variables' as *;
+
+body {
+  font-family: $font-body;
+  background: $offwhite;
+  color: $darkgray;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 1000;
+  background: $highlight;
+  color: $darkgray;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  &:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    outline: 2px solid $primary;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+} 

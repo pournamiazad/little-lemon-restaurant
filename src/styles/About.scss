@@ -1,0 +1,138 @@
+@use 'variables' as *;
+
+.about {
+  background: white;
+  padding: 3rem 0 6rem;
+  .about__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .about__content {
+    flex: 1 1 340px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 260px;
+    order: 1;
+    .about__title {
+      font-size: 2.5rem;
+      color: $primary;
+      margin: 0 0 0.5rem 0;
+      font-weight: bold;
+      font-family: $font-heading;
+    }
+    .about__city {
+      font-size: 1.3rem;
+      color: $highlight;
+      margin: 0 0 1.2rem 0;
+      font-weight: bold;
+    }
+    .about__desc {
+      font-size: 1.05rem;
+      color: $darkgray;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+  }
+  .about__images {
+    flex: 0 0 350px;
+    min-width: 260px;
+    min-height: 320px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 340px;
+    order: 2;
+    .about__image {
+      width: 240px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: absolute;
+      background: $offwhite;
+      &--main {
+        right: 0;
+        top: 0;
+        z-index: 2;
+      }
+      &--overlap {
+        right: 160px;
+        top: 60px;
+        z-index: 1;
+        opacity: 0.95;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .about {
+    padding: 2rem 0;
+    .about__container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2rem;
+    }
+    .about__content {
+      order: 1;
+      flex: 1 0 auto;
+      max-width: 100%;
+      margin-bottom: 4rem;
+    }
+    .about__images {
+      min-height: 140px;
+      height: 140px;
+      flex-direction: row;
+      flex: 1 0 auto;
+      .about__image {
+        position: static;
+        width: 100%;
+        max-width: 50%;
+        height: 25vw;
+        margin-right: 0;
+        margin-bottom: 0;
+        &--main {
+          z-index: 2;
+        }
+        &--overlap {
+          z-index: 1;
+          margin-left:0;
+          opacity: 0.95;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .about__title {
+    font-size: 1.5rem;
+  }
+  .about__city {
+    font-size: 1rem;
+  }
+  .about__images {
+    flex-direction: column;
+    align-items: center;
+    .about__image {
+      width: 90vw;
+      max-width: 200px;
+      margin: 0 0 0.5rem 0;
+      position: static;
+    }
+    .about__image--overlap {
+      margin-top: -50px;
+      margin-left: -50px;
+    }
+  }
+  .about__content {
+    flex: 1 0 auto;
+    max-width: 100%;
+  }
+} 

@@ -1,0 +1,117 @@
+@use 'variables';
+
+.hero {
+  background: variables.$primary;
+  color: white;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 2rem;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .hero__content {
+    flex: 1 1 400px;
+    max-width: 500px;
+  }
+  .hero__title {
+    font-size: 3rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: bold;
+    font-family: variables.$font-heading;
+  }
+  .hero__city {
+    font-size: 1.5rem;
+    color: variables.$highlight;
+    margin: 0 0 1rem 0;
+    font-weight: bold;
+  }
+  .hero__desc {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: variables.$offwhite;
+  }
+  .hero__cta {
+    background: variables.$darkgray;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    &:hover {
+      background: variables.$highlight;
+      color: variables.$darkgray;
+    }
+  }
+  .hero__image {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 2rem 0 1.5rem 0;
+    .container {
+      flex-direction: column;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    .hero__content {
+      padding: 0 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      flex: 1 0 auto;
+      max-width: 100%;
+    }
+    .hero__image {
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      width: 100%;
+      justify-content: center;
+      img {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .hero {
+    padding: 1.2rem 0 1rem 0;
+    .hero__content {
+      padding: 0 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero__title {
+      font-size: 1.5rem;
+    }
+    .hero__desc {
+      font-size: 1rem;
+    }
+    .hero__cta {
+      width: 100%;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+    }
+    .hero__image {
+      margin-bottom: 0.5rem;
+      img {
+        max-width: 95vw;
+      }
+    }
+  }
+} 

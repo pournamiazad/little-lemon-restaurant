@@ -1,0 +1,28 @@
+@use 'variables' as *;
+@use 'global';
+@use 'Header';
+@use 'Nav';
+@use 'Hero';
+@use 'Specials';
+@use 'Testimonials';
+@use 'About';
+@use 'Footer';
+@use 'BookingForm';
+
+// App-level styles
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $offwhite;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3vw;
+}
+
+main {
+  flex: 1 0 auto;
+} 
